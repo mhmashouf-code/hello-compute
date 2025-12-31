@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>حل معادله درجه دوم - جشنواره خوارزمی</title>
+    <style>
+        body { font-family: Tahoma; text-align: center; background: #f0f8ff; padding: 50px; }
+        input, button { font-size: 18px; padding: 10px; margin: 10px; }
+        #result { font-size: 24px; color: blue; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>حل معادله ax² + bx + c = ۰</h1>
+    <p>a: <input type="number" id="a" value="1"></p>
+    <p>b: <input type="number" id="b" value="5"></p>
+    <p>c: <input type="number" id="c" value="6"></p>
+    <button onclick="solve()">محاسبه ریشه‌ها</button>
+    <div id="result"></div>
+
+    <script>
+        function solve() {
+            let a = Number(document.getElementById('a').value);
+            let b = Number(document.getElementById('b').value);
+            let c = Number(document.getElementById('c').value);
+            
+            let delta = b*b - 4*a*c;
+            let result = document.getElementById('result');
+            
+            if (delta > 0) {
+                let x1 = (-b + Math.sqrt(delta)) / (2*a);
+                let x2 = (-b - Math.sqrt(delta)) / (2*a);
+                result.innerHTML = `ریشه‌ها: x₁ = ${x1.toFixed(2)} و x₂ = ${x2.toFixed(2)}`;
+            } else if (delta == 0) {
+                let x = -b / (2*a);
+                result.innerHTML = `ریشه تکراری: x = ${x.toFixed(2)}`;
+            } else {
+                result.innerHTML = "معادله ریشه حقیقی ندارد (Δ < ۰)";
+            }
+        }
+    </script>
+</body>
+</html>
